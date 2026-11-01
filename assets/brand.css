@@ -1,0 +1,1451 @@
+/* ================================================
+   Compliance365 Brand Theme - assets/brand.css
+   Clean, modern, enterprise/SaaS style (2025-2026)
+   Single source of truth for ALL site styles
+   ================================================ */
+
+/* === Global Variables (Colors, Shadows, etc.) ============== */
+:root {
+  --primary: #BE4A1E;           /* Gold – buttons, links, accents */
+  --primary-dark: #A63A12;      /* Darker gold – hover states */
+  --primary-light: #F0A97F;     /* Gold light – gradients, highlights */
+  --accent: #F0A97F;            /* Gold light accent */
+  --light: #FAF7F1;             /* Warm paper – page background */
+  --muted: #6B6860;             /* Warm gray – secondary text */
+  --surface: #FAF7F1;           /* Cards, sections */
+  --ink: #0B0B0C;               /* Near-black for body text */
+  --border: #DDD8CF;            /* Warm border */
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Consistent icon styles */
+  --icon-size: 80px;
+  --icon-bg: linear-gradient(135deg, rgba(190, 74, 30,0.1), rgba(166, 58, 18,0.08));
+  --icon-border: var(--primary);
+}
+
+/* === Base / Reset =========================================== */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Bricolage Grotesque, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #0B0B0C;
+  background: var(--light);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Typography ============================================= */
+h1, h2, h3 {
+  line-height: 1.12;
+  margin: 0 0 0.7rem;
+  letter-spacing: -0.015em;
+  color: #0B0B0C;
+  font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+}
+h1 { font: 500 clamp(2.4rem, 4vw, 3.4rem)/1.12 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; }
+h2 { font: 500 clamp(1.8rem, 2.6vw, 2.2rem)/1.12 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; }
+h3 { font: 500 1.25rem/1.12 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; }
+/* Bricolage Grotesque ships no italic, so an <em> or <i> inside a heading
+   would render as a browser-synthesised oblique — a mechanically slanted
+   grotesque, which reads as a mistake rather than a choice. Emphasis in
+   display type moves to weight instead. Four headings across the site rely
+   on this (homepage hero, Checkpoint console, posture scan, RFFR), and it
+   also retires the italic-accent-phrase pattern that was the most
+   recognisable single element of the look this replaced. */
+h1 em, h2 em, h3 em,
+h1 i, h2 i, h3 i {
+  font-style: normal;
+  font-weight: 600;
+}
+p { margin: 0.3rem 0 1rem; }
+/* --text-muted is ground-aware; --muted was light-ground only and
+   measured 3.54:1 wherever .muted landed on a dark section. */
+.muted { color: var(--text-muted); }
+.small { font-size: 0.95rem; }
+
+/* .center lives here rather than in BaseLayout's <style> block because that
+   block is scoped by Astro — its rules are rewritten to
+   `.center[data-astro-cid-…]` and so only ever match elements in BaseLayout's
+   own template, never slotted page content. The class is applied 378 times
+   across the pages and was silently doing nothing. */
+.center { text-align: center; }
+
+/* === Links ================================================== */
+/* Links are text, so they take the legible gold rather than the fill
+   gold — and --accent-ink flips on dark grounds, so a link in a dark
+   section stays readable without a separate rule. */
+a {
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+a:hover {
+  color: #0B0B0C;
+}
+
+/* === Layout / Containers ==================================== */
+.container,
+.section > .container,
+.section-tight > .container,
+.container.hero {
+  max-width: min(1320px, 96vw);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 26px;
+}
+.section { padding: 8rem 0; }
+.section-tight { padding: 4rem 0; }
+
+/* === Header ================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* === Buttons ================================================ */
+.btn {
+  display: inline-block;
+  padding: 14px 18px;
+  border-radius: 3px;
+  font-weight: 900;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-primary {
+  color: #FAF7F1;
+  background: #0B0B0C;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--primary);
+}
+.btn-primary:hover {
+  background: #1B1B1D;
+  transform: scale(1.03);
+}
+.gold-rule { width:26px; height:1px; background:#BE4A1E; display:block; margin-bottom:18px; }
+
+/* .btn-outline is listed here too: it had no rule of its own, so an
+   <a class="btn btn-outline"> fell through to the base anchor colour —
+   the brand gold, 3.35:1 on cream. The border keeps the full-strength
+   gold; only the label moves to the legible one. */
+.btn-ghost,
+.btn-outline {
+  background: transparent;
+  color: var(--accent-ink);
+  border: 1px solid var(--primary);
+}
+.btn-ghost:hover {
+  background: linear-gradient(180deg, #fff, #F0EBE0);
+  border-color: rgba(190, 74, 30, 0.35);
+  box-shadow: 0 10px 22px -14px rgba(190, 74, 30, 0.25);
+}
+
+/* === Trust signals ========================================== */
+ul.trust-signals {
+  list-style: none !important;
+  margin: 1.5rem 0;
+  padding: 0 !important;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+  max-width: 560px;
+}
+ul.trust-signals li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0B0B0C;
+  background: rgba(190, 74, 30,0.06);
+  border: 1px solid rgba(190, 74, 30,0.18);
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  margin: 0 !important;
+}
+ul.trust-signals li::before {
+  content: '\2713';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  background: #BE4A1E;
+  color: #FAF7F1;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* === Pills ==================================================
+   Text was #BE4A1E. Composited over this pill's own 7% gold tint on
+   cream that measures 3.12:1 — well under the WCAG AA 4.5:1 floor, and
+   pills carry real information (framework names, categories), not
+   decoration. #A63A12, the darker gold used elsewhere on the site, only
+   reaches 4.46:1 against the same tint, so it is not enough here
+   either; #A63A12 clears it on both grounds the pill actually appears
+   on — 5.54:1 on cream, 5.90:1 on white.
+
+   Measured across eight pages, 164 of the 174 pills sit on a light
+   ground; the other ten are all inside .svc-hero, where the original
+   #BE4A1E already passes comfortably against near-black and is kept. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #A63A12;
+  background: rgba(190, 74, 30, 0.07);
+  border: 1px solid rgba(190, 74, 30, 0.18);
+  transition: background 0.15s, border-color 0.15s;
+}
+/* Dark hero: the lighter gold is the legible one against near-black. */
+.svc-hero .pill,
+.hero-dk .pill,
+.band-dark .pill,
+.svc-final-cta .pill {
+  color: #F0A97F;
+  border-color: rgba(240, 169, 127, 0.30);
+}
+a.pill:hover {
+  background: rgba(190, 74, 30, 0.13);
+  border-color: rgba(190, 74, 30, 0.3);
+}
+.pill.brand {
+  background: rgba(190, 74, 30, 0.12);
+  border-color: rgba(190, 74, 30, 0.28);
+  color: #A63A12;
+}
+
+/* === Cards ================================================== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  transition: transform 0.28s, box-shadow 0.28s;
+}
+.card.lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+/* Feature cards with subtle radial glow */
+.card.feature {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.card.feature::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(600px 160px at 10% -10%, rgba(190, 74, 30,0.06), transparent 60%),
+              radial-gradient(600px 160px at 110% 110%, rgba(240, 169, 127,0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.22s;
+}
+.card.feature:hover::after { opacity: 1; }
+
+/* On-brand, consistent icons */
+.icon {
+  width: var(--icon-size, 80px);
+  height: var(--icon-size, 80px);
+  margin: 0 auto 1.4rem;
+  background: var(--icon-bg, linear-gradient(135deg, rgba(190, 74, 30,0.1), rgba(166, 58, 18,0.08)));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--icon-border, var(--primary));
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+.card.feature.center:hover .icon {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.12);
+  box-shadow: 0 12px 30px rgba(190, 74, 30,0.3);
+}
+.icon svg {
+  width: 48px;
+  height: 48px;
+  stroke-width: 2.5;
+}
+
+/* === Accordion (native details/summary — no JS) ============= */
+.acc-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.acc-item + .acc-item { margin-top: 12px; }
+.acc-item summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #0B0B0C;
+  list-style: none;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.acc-item summary::-webkit-details-marker { display: none; }
+.acc-item summary::after {
+  content: '+';
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1;
+}
+.acc-item[open] summary::after { content: '\2013'; }
+.acc-item .acc-body {
+  margin: 0;
+  padding: 0 22px 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+/* Region toggle — plain radio inputs + labels, CSS-only (no JS). */
+.acc-region { position: relative; }
+.acc-region input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.acc-region-toggle { display: flex; gap: 10px; justify-content: center; margin: 2rem 0 2.5rem; flex-wrap: wrap; }
+.acc-region-toggle label {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.acc-region-panel { display: none; }
+#region-au:checked ~ .acc-region-panel[data-panel="au"],
+#region-usuk:checked ~ .acc-region-panel[data-panel="usuk"] { display: block; }
+#region-au:checked ~ .acc-region-toggle label[for="region-au"],
+#region-usuk:checked ~ .acc-region-toggle label[for="region-usuk"] {
+  background: rgba(190, 74, 30,0.1);
+  border-color: rgba(190, 74, 30,0.35);
+  color: var(--accent-ink);
+}
+
+/* A whole section collapsed behind its own heading — for content that
+   narrows to one audience (e.g. "SOC 2 for US-facing companies") rather
+   than being universally relevant, so it doesn't cost everyone the
+   scroll. */
+.acc-section summary { cursor: pointer; list-style: none; }
+.acc-section summary::-webkit-details-marker { display: none; }
+.acc-section summary h2 { display: inline-flex; align-items: center; gap: 12px; }
+.acc-section summary h2::after {
+  content: '+';
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 0.65em;
+}
+.acc-section[open] summary h2::after { content: '\2013'; }
+
+/* === Grids ================================================== */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+@media (max-width: 1040px) { .grid-2 { grid-template-columns: 1fr; } }
+@media (max-width: 920px) { .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+/* === Hero (polished & modern) ============================== */
+.hero {
+  padding: 10rem 0 8rem;
+  background: linear-gradient(135deg, rgba(190, 74, 30,0.04), rgba(240, 169, 127,0.03), #FAF7F1);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  margin-bottom: 1.5rem;
+  color: #0B0B0C;
+}
+
+.hero-sub {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--muted);
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.hero-ctas .btn {
+  padding: 1.2rem 2.8rem;
+  font-size: 1.2rem;
+}
+
+/* Service pages: a quiet link from the hero down to the cost estimator. */
+.hero-estimate { margin: -1.5rem 0 0; font-size: .95rem; }
+.hero-estimate a { color: #F0A97F; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.hero-estimate a:hover { color: #FAF7F1; }
+
+/* === Announcement Bar ====================================== */
+.announce {
+  background: var(--primary-dark);
+  color: white;
+  text-align: center;
+  padding: 0.9rem 0;
+  font-weight: 500;
+}
+
+/* === Full-Width Images ===================================== */
+.full-width-image, .cover-img {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px -20px rgba(0,0,0,0.12);
+  margin: 3rem auto 0;
+  display: block;
+}
+
+/* === Desire Grid (Enterprise Buyers Want) ================== */
+.desire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.desire-card {
+  text-align: center;
+}
+
+.desire-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+  margin-bottom: 1.8rem;
+}
+
+.desire-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* === Comparison Table – Premium SaaS Style ===================== */
+.comparison-table {
+  width: 100%;
+  max-width: 960px;
+  margin: 3rem auto 0;
+  border-collapse: collapse;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-row:last-child {
+  border-bottom: none;
+}
+
+.compare-header {
+  background: var(--primary);
+  color: white;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-align: center;
+  padding: 1.6rem 2rem;
+}
+
+.compare-cell {
+  padding: 1.6rem 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.compare-cell:last-child {
+  border-right: none;
+}
+
+.compare-icon {
+  font-size: 1.8rem;
+  min-width: 36px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.compare-cell.bad .compare-icon {
+  color: #ef4444;
+}
+
+.compare-cell.good .compare-icon {
+  color: #10b981;
+}
+
+.compare-cell.bad {
+  background: rgba(239,68,68,0.05);
+  color: #991b1b;
+}
+
+.compare-cell.good {
+  background: rgba(16,185,129,0.05);
+  color: #166534;
+  font-weight: 600;
+}
+
+/* Hover effect */
+.compare-row:hover .compare-cell {
+  background: rgba(190, 74, 30,0.03);
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+  .compare-row {
+    grid-template-columns: 1fr;
+  }
+  .compare-cell {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-header {
+    background: var(--primary-dark);
+  }
+}
+
+/* === CTA Center ============================================ */
+.cta-center {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* === Phases (4-Phase System) =============================== */
+.phases-breakdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.phase-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.phase-step:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.phase-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--icon-bg, linear-gradient(135deg, rgba(190, 74, 30,0.1), rgba(166, 58, 18,0.08)));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.phase-step:hover .phase-icon {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.12);
+}
+
+.phase-step h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.3rem;
+}
+
+/* === FAQ Grid ============================================== */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.faq-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.faq-card h3 {
+  font-size: 1.35rem;
+  margin: 0 0 1rem;
+  color: #0B0B0C;
+}
+
+.faq-card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* === Final CTA / Hero-like sections ======================== */
+.final-cta {
+  color: white !important;
+}
+
+.final-cta h2,
+.final-cta p,
+.final-cta .lead {
+  color: white !important;
+}
+
+.final-cta .btn-primary {
+  background: white !important;
+  color: var(--primary) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 3.4rem; }
+  .desire-grid, .phases-breakdown, .faq-grid { grid-template-columns: repeat(2, 1fr); }
+  .desire-card img { height: 360px; }
+}
+
+@media (max-width: 768px) {
+  .compare-row { grid-template-columns: 1fr; }
+  .phases-breakdown, .faq-grid { grid-template-columns: 1fr; }
+}
+
+/* === Cookie Consent Banner – Best Practice ===================== */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.cookie-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cookie-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cookie-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.cookie-modal-inner {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.cookie-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.cookie-options label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.cookie-options input {
+  width: 20px;
+  height: 20px;
+}
+
+.cookie-modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .cookie-banner {
+    bottom: 10px;
+    padding: 1rem;
+  }
+  .cookie-actions {
+    flex-direction: column;
+  }
+}
+
+/* === Privacy Policy Page Styling – Consistent with Other Pages === */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 2.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 900;
+    margin: 0 0 1.2rem;
+    color: #0B0B0C;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 1rem;
+    color: #0B0B0C;
+  }
+
+  .summary-banner {
+    background: rgba(190, 74, 30,0.06);
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary);
+  }
+
+  .summary-banner p {
+    margin: 0;
+    font-weight: 600;
+    color: #0B0B0C;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      padding: 1.8rem;
+    }
+  }
+
+/* ================================================
+   SOCIAL PROOF / TESTIMONIAL CAROUSEL (Home Page)
+   ================================================ */
+
+.trust-section {
+  background: var(--light);
+  padding: 6rem 0;
+}
+
+.trust-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.trust-section .section-lead {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  color: var(--muted);
+}
+
+.t-carousel {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.t-viewport {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.t-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.22, 0.75, 0.25, 1);
+}
+
+.t-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.t-slide blockquote {
+  font-style: italic;
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.t-slide .testimonial-author {
+  font-weight: 600;
+  color: #0B0B0C;
+  font-size: 1rem;
+}
+
+.t-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.t-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.t-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+.t-dots {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.t-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--muted);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.t-dot.active {
+  background: var(--primary);
+  transform: scale(1.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .t-slide {
+    padding: 1.5rem;
+  }
+  .t-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+}
+
+/* === Services Hero – Premium Look & Feel ==================== */
+  .hero-wrap {
+    padding: 10rem 0 8rem;
+    background: linear-gradient(135deg, rgba(190, 74, 30,0.04), rgba(240, 169, 127,0.03), #FAF7F1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(80% 50% at 20% 10%, rgba(190, 74, 30,0.06), transparent 60%);
+    pointer-events: none;
+  }
+
+  .section-head h1 {
+    font-size: clamp(3rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    color: #0B0B0C;
+  }
+
+  .section-lead {
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Trust Badges – Icon-Based, Modern */
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 2rem;
+    margin: 3rem 0;
+  }
+
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+  }
+
+  .trust-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary);
+  }
+
+  .badge-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
+
+  /* Hero CTAs */
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-ctas .btn {
+    padding: 1.2rem 2.8rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 12px;
+  }
+
+  /* This rule is indented as though it belongs to the @media block
+     above, but that block closed at the ".t-btn" rule — so it applies at
+     every width and beats the .btn-primary defined near the top of this
+     file. The site's primary button is therefore gold, not near-black.
+
+     Keeping the gold (changing it would restyle every CTA on the site)
+     and fixing only the label: white on #BE4A1E measures 3.58:1, under
+     the AA floor on the most important control on the page. #0B0B0C
+     gives 5.50:1 and matches .btn-hdk-primary, which is the same gold
+     button treatment the homepage and service pages already use. */
+  .btn-primary {
+    background: var(--primary);
+    color: var(--on-accent);
+    border: none;
+    box-shadow: 0 10px 30px rgba(190, 74, 30,0.3);
+    transition: all 0.25s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 16px 40px rgba(190, 74, 30,0.4);
+  }
+
+  /* Second .btn-outline in this file — like .btn-primary, it sits in a
+     run of rules indented as though scoped to a @media block that had
+     already closed, so it applies at every width and beats the one
+     above. Same token here, so whichever wins is legible. */
+  .btn-outline {
+    background: transparent;
+    color: var(--accent-ink);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-outline:hover {
+    background: rgba(190, 74, 30,0.05);
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .hero-wrap {
+      padding: 7rem 0 5rem;
+    }
+    .hero-ctas {
+      flex-direction: column;
+    }
+    .trust-badges {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+/* === Trust Bar & Stats Row === */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: white;
+  padding: 0.8rem 1.4rem;
+  border-radius: 2rem;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  color: #0B0B0C;
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-badge svg {
+  color: var(--primary);
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin: 4rem 0;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #0B0B0C;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Hero glass effect */
+.hero-wrap {
+  background: linear-gradient(135deg, rgba(190, 74, 30,0.1), rgba(240, 169, 127,0.1), white);
+  backdrop-filter: blur(5px); /* Subtle hero bg blur */
+}
+
+/* Hover Animations */
+.card, .btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(190, 74, 30,0.25);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(190, 74, 30,0.3);
+}
+
+/* Enhanced Typography */
+h1 { font-size: clamp(2.8rem, 5vw, 4.2rem); line-height: 1.05; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
+h3 { font-size: clamp(1.4rem, 3vw, 1.8rem); line-height: 1.2; }
+p, .muted { font-size: clamp(1rem, 2vw, 1.1rem); line-height: 1.7; }
+
+/* Better Spacing */
+.section { padding: clamp(6rem, 8vw, 10rem) 0; }
+.section-tight { padding: clamp(4rem, 6vw, 6rem) 0; }
+.container { max-width: clamp(1000px, 90vw, 1280px); }
+
+/* Gradients */
+.hero-wrap {
+  background: linear-gradient(135deg, #f0f7ff 0%, white 100%);
+}
+
+.section:nth-child(even) {
+  background: linear-gradient(135deg, rgba(190, 74, 30,0.02), white 100%);
+}
+
+/* Icons */
+.icon {
+  width: clamp(60px, 8vw, 80px);
+  height: clamp(60px, 8vw, 80px);
+  background: linear-gradient(135deg, rgba(190, 74, 30,0.12), rgba(166, 58, 18,0.08));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.card:hover .icon {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(190, 74, 30,0.3);
+}
+
+/* Fade-in animation for sections */
+.section {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Enterprise-Grade SoA Table ============================ */
+.soa-table-wrapper {
+  overflow-x: auto;
+  margin: 2.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  background: white;
+}
+
+.soa-table {
+  width: 100%;
+  min-width: 1100px; /* Forces horizontal scroll on small screens */
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.soa-table th,
+.soa-table td {
+  padding: 1rem 1.2rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.soa-table thead th {
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.soa-table tbody tr:nth-child(even) {
+  background: #FAF7F1;
+}
+
+.soa-table tbody tr:hover {
+  background: rgba(190, 74, 30,0.05);
+  transition: background 0.2s ease;
+}
+
+/* Framework Badges */
+.framework-badge {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.framework-badge.iso27001 { background: #BE4A1E; }
+.framework-badge.iso27701 { background: #0284c7; }
+.framework-badge.iso42001 { background: #7c3aed; }
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.implemented { background: #dcfce7; color: #166534; }
+.status-badge.excluded { background: #fee2e2; color: #991b1b; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .soa-table th,
+  .soa-table td {
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* Floating messaging launcher (mobile only) */
+/* --fab-lift is published by the cookie banner while it is on screen —
+   without it these controls sit inside the banner's band at phone
+   widths, four fixed layers deep. Defaults to 0 so the controls behave
+   normally once consent is stored (or if the script never runs). */
+.fab-msg {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + var(--fab-lift, 0px));
+  transition: bottom .2s ease;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.fab-main {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  /* Brand ink with the accent ring, matching .fab-teams on desktop. */
+  background: #0B0B0C;
+  color: #fff;
+  border: 1.5px solid #BE4A1E;
+  box-shadow: 0 10px 30px rgba(15,23,42,.35);
+}
+
+.fab-main-icon {
+  display: block;
+  transform: translateY(1px);
+}
+
+.fab-main-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.msg-menu {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 16px;
+  background: #020617;
+  box-shadow: 0 16px 40px rgba(15,23,42,.45);
+  min-width: 230px;
+}
+
+.msg-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 10px;
+  font-size: 13px;
+  text-decoration: none;
+  color: #e5e7eb;
+  margin-bottom: 4px;
+}
+
+.msg-item:hover,
+.msg-item:focus-visible {
+  background: rgba(148,163,184,.22);
+}
+
+.msg-ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 1px;
+}
+
+.msg-ico-emoji {
+  flex: 0 0 18px;
+  margin-top: 1px;
+}
+
+.msg-ico-emoji svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  color: #F0A97F;
+}
+
+.msg-sub {
+  display: block;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Hide on desktop */
+@media (min-width: 900px) {
+  .fab-msg { display: none; }
+}
+
+/* Call Now */
+.fab-call {
+  position: fixed;
+  right: 16px;
+  bottom: calc(80px + var(--fab-lift, 0px));
+  transition: bottom .2s ease;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #BE4A1E;
+  color: #fff !important;
+  font-size: 24px;
+  box-shadow: 0 10px 30px rgba(15,23,42,.35);
+}
+
+.fab-call svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Phones get one contact button, not two: the call option lives in the
+   messaging menu (first item), so the separate call bubble no longer
+   stacks above it and covers the page. */
+.fab-call { display: none; }
+
+/* Desktop-only Microsoft Teams chat */
+.fab-teams {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + var(--fab-lift, 0px));
+  z-index: 65;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  /* Brand ink with the accent ring rather than Teams purple, so it sits
+     with the site; the Teams logo inside still says what it opens. */
+  background: #0B0B0C;
+  border: 1.5px solid #BE4A1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.35);
+  transition: bottom .2s ease, transform .15s ease;
+}
+.fab-teams:hover,
+.fab-teams:focus-visible {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 899px) {
+  .fab-teams { display: none; }
+}
