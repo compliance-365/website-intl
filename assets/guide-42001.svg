@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#BE4A1E" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#0B0B0C" stop-opacity=".14"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer glow card -->
+  <rect x="0" y="0" width="960" height="420" rx="18" fill="url(#bg)"/>
+
+  <!-- App surface -->
+  <g transform="translate(32,28)" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif">
+    <rect x="0" y="0" width="896" height="340" rx="14" fill="#fff" stroke="#F5F0E8"/>
+
+    <!-- Tabs -->
+    <g transform="translate(20,16)" font-size="13">
+      <g>
+        <rect width="118" height="30" rx="8" fill="#F5F0E8" stroke="#F5F0E8"/>
+        <text x="14" y="20" fill="#BE4A1E" font-weight="700">AI Model Register</text>
+      </g>
+      <g transform="translate(132,0)">
+        <rect width="170" height="30" rx="8" fill="#fff" stroke="#F5F0E8"/>
+        <text x="14" y="20" fill="#0B0B0C">Risk &amp; Impact Assessment</text>
+      </g>
+      <g transform="translate(316,0)">
+        <rect width="140" height="30" rx="8" fill="#fff" stroke="#F5F0E8"/>
+        <text x="14" y="20" fill="#0B0B0C">Human Oversight</text>
+      </g>
+      <g transform="translate(468,0)">
+        <rect width="138" height="30" rx="8" fill="#fff" stroke="#F5F0E8"/>
+        <text x="14" y="20" fill="#0B0B0C">Monitoring &amp; Logs</text>
+      </g>
+    </g>
+
+    <!-- Left: model inventory list -->
+    <g transform="translate(20,64)">
+      <rect width="340" height="248" rx="10" fill="#fff" stroke="#F5F0E8"/>
+      <rect x="0" y="0" width="340" height="40" rx="10" fill="#F5F0E8" stroke="#F5F0E8"/>
+      <text x="14" y="24" font-size="12" fill="#0B0B0C">Registered models</text>
+
+      <g font-size="12" fill="#0B0B0C">
+        <circle cx="20" cy="68" r="5" fill="#BE4A1E"/>
+        <text x="36" y="72">Support Copilot — internal only</text>
+
+        <circle cx="20" cy="104" r="5" fill="#BE4A1E"/>
+        <text x="36" y="108">Content Classifier — public website</text>
+
+        <circle cx="20" cy="140" r="5" fill="#BE4A1E"/>
+        <text x="36" y="144">Anomaly Detector — payments</text>
+
+        <circle cx="20" cy="176" r="5" fill="#BE4A1E"/>
+        <text x="36" y="180">Forecast Model — planning</text>
+      </g>
+    </g>
+
+    <!-- Right: kanban for governance workflow -->
+    <g transform="translate(380,64)" font-size="12">
+      <!-- Columns -->
+      <g>
+        <rect x="0" y="0" width="168" height="248" rx="10" fill="#fff" stroke="#F5F0E8"/>
+        <text x="12" y="20" fill="#6B6860">To Do</text>
+      </g>
+      <g>
+        <rect x="184" y="0" width="168" height="248" rx="10" fill="#fff" stroke="#F5F0E8"/>
+        <text x="196" y="20" fill="#6B6860">In Progress</text>
+      </g>
+      <g>
+        <rect x="368" y="0" width="168" height="248" rx="10" fill="#fff" stroke="#F5F0E8"/>
+        <text x="380" y="20" fill="#6B6860">Done</text>
+      </g>
+
+      <!-- Cards -->
+      <g font-size="11" fill="#0B0B0C">
+        <!-- To Do -->
+        <rect x="12" y="44" width="144" height="36" rx="8" fill="#fff" stroke="#DDD8CF"/>
+        <text x="22" y="66">Define use case</text>
+        <rect x="12" y="92" width="144" height="36" rx="8" fill="#fff" stroke="#DDD8CF"/>
+        <text x="22" y="114">Data lineage map</text>
+
+        <!-- In Progress -->
+        <rect x="196" y="44" width="144" height="36" rx="8" fill="#fff" stroke="#DDD8CF"/>
+        <text x="206" y="66">AI Risk Assessment</text>
+        <rect x="196" y="92" width="144" height="36" rx="8" fill="#fff" stroke="#DDD8CF"/>
+        <text x="206" y="114">Human-in-the-loop</text>
+
+        <!-- Done -->
+        <rect x="380" y="44" width="144" height="36" rx="8" fill="#ecfdf5" stroke="#d1fae5"/>
+        <text x="390" y="66" fill="#065f46">Monitoring in Sentinel</text>
+        <rect x="380" y="92" width="144" height="36" rx="8" fill="#ecfdf5" stroke="#d1fae5"/>
+        <text x="390" y="114" fill="#065f46">Model versioned &amp; signed</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Footer label -->
+  <text x="42" y="388" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+        font-size="16" fill="#BE4A1E" font-weight="700">
+    AI Governance Readiness (ISO 42001) — inventory, risk, oversight &amp; monitoring
+  </text>
+</svg>
