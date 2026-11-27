@@ -1,0 +1,28 @@
+<!-- public/assets/illus-cps234.svg — CPS 234: the two notification clocks over the nine requirement domains -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470" font-family="Manrope, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BE4A1E" stop-opacity=".16"/><stop offset="1" stop-color="#0B0B0C" stop-opacity=".16"/></linearGradient></defs><rect width="720" height="470" rx="26" fill="url(#g)"/>
+  <g transform="translate(40,34)">
+    <rect width="640" height="74" rx="14" fill="#fff"/>
+    <text x="22" y="30" font-size="11.5" font-weight="700" fill="#A63A12" letter-spacing="1.6">APRA · PRUDENTIAL STANDARD CPS 234</text>
+    <text x="22" y="56" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="21" font-weight="700" fill="#0B0B0C">Information security</text>
+    <rect x="477" y="22" width="141" height="30" rx="15" fill="#FBEFE8"/>
+    <text x="547.5" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#A63A12">24 requirements</text>
+  </g>
+  <g text-anchor="middle">
+    <g transform="translate(40.0,124)"><rect width="315.0" height="178" rx="12" fill="#fff"/><text x="157.5" y="54" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="34" font-weight="700" fill="#BE4A1E">72 hours</text><text x="157.5" y="86" font-size="13.5" font-weight="800" fill="#0B0B0C">Material incident</text><text x="157.5" y="106" font-size="10.5" font-weight="600" fill="#57534B">¶35 · clock starts on</text><text x="157.5" y="120" font-size="10.5" font-weight="600" fill="#57534B">becoming aware</text><text x="157.5" y="166" font-size="10" font-weight="700" fill="#6B6860">Notify APRA</text></g>
+    <g transform="translate(365.0,124)"><rect width="315.0" height="178" rx="12" fill="#fff"/><text x="157.5" y="54" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="28" font-weight="700" fill="#0B0B0C">10 business days</text><text x="157.5" y="86" font-size="13.5" font-weight="800" fill="#0B0B0C">Control weakness</text><text x="157.5" y="106" font-size="10.5" font-weight="600" fill="#57534B">¶36 · material weakness</text><text x="157.5" y="120" font-size="10.5" font-weight="600" fill="#57534B">that can't be fixed in time</text><text x="157.5" y="166" font-size="10" font-weight="700" fill="#6B6860">Notify APRA</text></g>
+  </g>
+  <g transform="translate(40,318)">
+    <rect width="640" height="118" rx="14" fill="#0B0B0C"/>
+    <text x="22" y="30" font-size="11.5" font-weight="700" fill="#F0A97F" letter-spacing="1.6">24 REQUIREMENTS · NINE DOMAINS · ¶13–36</text>
+    <rect x="22.0" y="44" width="59.0" height="26" rx="13" fill="#26231F"/><circle cx="35.0" cy="57" r="3.5" fill="#BE4A1E"/><text x="44.0" y="61" font-size="11" font-weight="700" fill="#FAF7F1">Roles</text>
+    <rect x="89.0" y="44" width="92.0" height="26" rx="13" fill="#26231F"/><circle cx="102.0" cy="57" r="3.5" fill="#BE4A1E"/><text x="111.0" y="61" font-size="11" font-weight="700" fill="#FAF7F1">Capability</text>
+    <rect x="189.0" y="44" width="131.6" height="26" rx="13" fill="#26231F"/><circle cx="202.0" cy="57" r="3.5" fill="#BE4A1E"/><text x="211.0" y="61" font-size="11" font-weight="700" fill="#FAF7F1">Policy framework</text>
+    <rect x="328.6" y="44" width="158.0" height="26" rx="13" fill="#26231F"/><circle cx="341.6" cy="57" r="3.5" fill="#BE4A1E"/><text x="350.6" y="61" font-size="11" font-weight="700" fill="#FAF7F1">Asset classification</text>
+    <rect x="494.6" y="44" width="78.8" height="26" rx="13" fill="#26231F"/><circle cx="507.6" cy="57" r="3.5" fill="#BE4A1E"/><text x="516.6" y="61" font-size="11" font-weight="700" fill="#FAF7F1">Controls</text>
+    <rect x="22.0" y="78" width="151.4" height="26" rx="13" fill="#26231F"/><circle cx="35.0" cy="91" r="3.5" fill="#BE4A1E"/><text x="44.0" y="95" font-size="11" font-weight="700" fill="#FAF7F1">Incident management</text>
+    <rect x="181.4" y="78" width="125.0" height="26" rx="13" fill="#26231F"/><circle cx="194.4" cy="91" r="3.5" fill="#BE4A1E"/><text x="203.4" y="95" font-size="11" font-weight="700" fill="#FAF7F1">Control testing</text>
+    <rect x="314.4" y="78" width="118.4" height="26" rx="13" fill="#26231F"/><circle cx="327.4" cy="91" r="3.5" fill="#BE4A1E"/><text x="336.4" y="95" font-size="11" font-weight="700" fill="#FAF7F1">Internal audit</text>
+    <rect x="440.8" y="78" width="138.2" height="26" rx="13" fill="#26231F"/><circle cx="453.8" cy="91" r="3.5" fill="#BE4A1E"/><text x="462.8" y="95" font-size="11" font-weight="700" fill="#FAF7F1">APRA notification</text>
+  </g>
+</svg>

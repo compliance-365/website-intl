@@ -1,0 +1,33 @@
+<!-- public/assets/illus-iso27001.svg — ISO/IEC 27001:2022: the four Annex A themes and a typical 12-week timeline -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470" font-family="Manrope, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BE4A1E" stop-opacity=".16"/><stop offset="1" stop-color="#0B0B0C" stop-opacity=".16"/></linearGradient></defs><rect width="720" height="470" rx="26" fill="url(#g)"/>
+  <g transform="translate(40,34)">
+    <rect width="640" height="74" rx="14" fill="#fff"/>
+    <text x="22" y="30" font-size="11.5" font-weight="700" fill="#A63A12" letter-spacing="1.6">ISO/IEC 27001:2022 · INFORMATION SECURITY</text>
+    <text x="22" y="56" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="21" font-weight="700" fill="#0B0B0C">An ISMS your auditor can certify</text>
+    <rect x="447" y="22" width="171" height="30" rx="15" fill="#FBEFE8"/>
+    <text x="532.5" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#A63A12">93 Annex A controls</text>
+  </g>
+  <g text-anchor="middle">
+    <g transform="translate(40.0,124)"><rect width="152.5" height="178" rx="12" fill="#fff"/><text x="76.25" y="54" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="34" font-weight="700" fill="#0B0B0C">37</text><text x="76.25" y="86" font-size="13.5" font-weight="800" fill="#0B0B0C">Organisational</text><text x="76.25" y="106" font-size="10.5" font-weight="600" fill="#57534B">Policies, suppliers,</text><text x="76.25" y="120" font-size="10.5" font-weight="600" fill="#57534B">incidents, continuity</text><text x="76.25" y="166" font-size="10" font-weight="700" fill="#6B6860">Annex A 5</text></g>
+    <g transform="translate(202.5,124)"><rect width="152.5" height="178" rx="12" fill="#fff"/><text x="76.25" y="54" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="34" font-weight="700" fill="#0B0B0C">8</text><text x="76.25" y="86" font-size="13.5" font-weight="800" fill="#0B0B0C">People</text><text x="76.25" y="106" font-size="10.5" font-weight="600" fill="#57534B">Screening, training,</text><text x="76.25" y="120" font-size="10.5" font-weight="600" fill="#57534B">responsibilities</text><text x="76.25" y="166" font-size="10" font-weight="700" fill="#6B6860">Annex A 6</text></g>
+    <g transform="translate(365.0,124)"><rect width="152.5" height="178" rx="12" fill="#fff"/><text x="76.25" y="54" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="34" font-weight="700" fill="#0B0B0C">14</text><text x="76.25" y="86" font-size="13.5" font-weight="800" fill="#0B0B0C">Physical</text><text x="76.25" y="106" font-size="10.5" font-weight="600" fill="#57534B">Sites, equipment,</text><text x="76.25" y="120" font-size="10.5" font-weight="600" fill="#57534B">media</text><text x="76.25" y="166" font-size="10" font-weight="700" fill="#6B6860">Annex A 7</text></g>
+    <g transform="translate(527.5,124)"><rect width="152.5" height="178" rx="12" fill="#fff"/><text x="76.25" y="54" font-family="Bricolage Grotesque, Manrope, system-ui, sans-serif" font-size="34" font-weight="700" fill="#BE4A1E">34</text><text x="76.25" y="86" font-size="13.5" font-weight="800" fill="#0B0B0C">Technological</text><text x="76.25" y="106" font-size="10.5" font-weight="600" fill="#57534B">Access, logging,</text><text x="76.25" y="120" font-size="10.5" font-weight="600" fill="#57534B">secure development</text><text x="76.25" y="166" font-size="10" font-weight="700" fill="#6B6860">Annex A 8</text></g>
+  </g>
+  <g transform="translate(40,318)">
+    <rect width="640" height="118" rx="14" fill="#0B0B0C"/>
+    <text x="22" y="30" font-size="11.5" font-weight="700" fill="#F0A97F" letter-spacing="1.6">A TYPICAL 12-WEEK TIMELINE</text>
+    <rect x="22.0" y="46" width="140.0" height="52" rx="10" fill="#26231F"/>
+    <text x="38.0" y="68" font-size="12" font-weight="700" fill="#FAF7F1">Weeks 1–2</text>
+    <text x="38.0" y="86" font-size="11" font-weight="600" fill="#C9C3B8">Scoping and gaps</text>
+    <rect x="174.0" y="46" width="140.0" height="52" rx="10" fill="#26231F"/>
+    <text x="190.0" y="68" font-size="12" font-weight="700" fill="#FAF7F1">Weeks 3–8</text>
+    <text x="190.0" y="86" font-size="11" font-weight="600" fill="#C9C3B8">Controls and SoA</text>
+    <rect x="326.0" y="46" width="140.0" height="52" rx="10" fill="#26231F"/>
+    <text x="342.0" y="68" font-size="12" font-weight="700" fill="#FAF7F1">Weeks 9–10</text>
+    <text x="342.0" y="86" font-size="11" font-weight="600" fill="#C9C3B8">Internal audit</text>
+    <rect x="478.0" y="46" width="140.0" height="52" rx="10" fill="#BE4A1E"/>
+    <text x="494.0" y="68" font-size="12" font-weight="700" fill="#FAF7F1">Weeks 11–12</text>
+    <text x="494.0" y="86" font-size="11" font-weight="600" fill="#FBEFE8">Stage 1 + Stage 2</text>
+  </g>
+</svg>
